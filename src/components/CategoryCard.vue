@@ -1,13 +1,23 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md">
     <q-card
-      class="my-card"
-      :color="color"
-      @click="$router.push('/product/' + slug)"
+      class="my-card cursor-pointer q-hoverable bg-secondary"
+      :bg-color="color"
+      flat
+      bordered
+      clickable
     >
       <q-card-section>
+        <div class="text-h6 color">
         {{ name }}
-        {{ color }}
+        <!-- <img :src="picture"> -->
+        </div>
+        <q-separator></q-separator>
+      </q-card-section>
+      <q-card-section
+        class="q-pt-none"
+      >
+        {{ description }}
       </q-card-section>
     </q-card>
   </div>
@@ -39,7 +49,13 @@ const props = defineProps({
     default() {
       return ''
     }
-  }
+  },
+  categoryID: {
+    type: String,
+    default() {
+      return ''
+    }
+  },
 })
 
 </script>
