@@ -1,16 +1,15 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md">
-    <q-card
-      class="my-card cursor-pointer q-hoverable bg-secondary"
-      :bg-color="color"
+    <q-card v-if="name!='landing'&&name!='Nouveautés'"
+      class="my-card cursor-pointer q-hoverable"
+      style="background: #93c8bd"
       flat
       bordered
       clickable
     >
       <q-card-section>
-        <div class="text-h6 color">
+        <div class="text-h6">
         {{ name }}
-        <!-- <img :src="picture"> -->
         </div>
         <q-separator></q-separator>
       </q-card-section>

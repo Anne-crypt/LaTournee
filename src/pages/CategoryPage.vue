@@ -1,9 +1,23 @@
 <template>
-  <q-page class="">
-    <q-item-section>
-      <q-item-label class="text-h5 q-pa-lg">{{ categoryStore.categoryName }}</q-item-label>
-    </q-item-section>
-    <!-- {{ sousCategories }} -->
+  <q-page>
+    <q-btn
+      class="q-ma-lg"
+      rounded
+      flat
+      icon="chevron_left"
+      style="background: #FF0080; color: white"
+      @click="back"
+    >
+    </q-btn>
+        <q-btn
+      class="q-ma-lg"
+      rounded
+      flat
+      style="background: #e04a95; color: white"
+      @click="back"
+    >
+      {{ categoryStore.categoryName }}
+    </q-btn>
     <sub-category-card
       v-for="subCat in sousCategories"
       :key="subCat.Nom"
@@ -16,8 +30,12 @@
 <script setup lang="ts">
 import { api } from 'boot/axios'
 import {ref, Ref, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { useCategoryStore } from 'src/stores/category'
 import SubCategoryCard from 'src/components/SubCategory.vue'
+
+
+const router = useRouter()
 
 const categoryStore = useCategoryStore()
 
@@ -35,6 +53,10 @@ onMounted(async () => {
       sousCategories.value.push(item)
 })))
 })
+
+async function back() {
+  router.push('/')
+}
 
 
 

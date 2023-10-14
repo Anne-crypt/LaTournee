@@ -1,7 +1,7 @@
 <template>
   <div class="q-pa-md items-start q-gutter-md">
-    <q-card-section class="text-h6 q-pb-none">
-      <div class="text-h6 q-pb-none" flat>
+    <q-card-section class="text-h6 q-py-none">
+      <div class="text-h5 q-pb-none text-bold" flat>
       {{ subCategory.Nom }}
       </div>
     </q-card-section>
