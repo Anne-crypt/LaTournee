@@ -8,7 +8,13 @@
     <q-separator></q-separator>
     <q-card-section class="row">
 
-      <q-card v-for="product in products" :key="product.ID"  class="my-card q-ma-xs q-px-xs" flat bordered>
+      <q-card v-for="product in products"
+        :key="product.ID"
+        class="my-card q-ma-xs q-px-xs cursor-pointer q-hoverable"
+        flat
+        bordered
+        @click="stockIDAndGoNext(product.ID)"
+      >
         <img :src="product.Image" style="height: 140px; max-width: 150px">
         {{ product['Nom du produit'] }}
       </q-card>
@@ -19,6 +25,12 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useProductStore } from 'src/stores/product'
+
+const router = useRouter()
+
+const productStore = useProductStore()
 
 const products = ref([])
 
@@ -37,8 +49,14 @@ onMounted(async () => {
 })
 
 async function formatData() {
-  console.log('bonjour')
   products.value = props.subCategory.Produits
+}
+
+async function stockIDAndGoNext(productID:string) {
+  productStore.productID = productID
+  console.log('productID stocked :', productStore.productID)
+  router.push('/product')
+
 }
 
 </script>
