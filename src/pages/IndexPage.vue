@@ -1,10 +1,20 @@
 <template>
   <q-page>
-    <q-item-section v-if="categoryStore.categoryName=='Nouveautés'">
-      <q-item-label class="text-h5 q-pa-lg">Nouveautés</q-item-label>
-    </q-item-section>
+
+    <q-btn
+      class="q-ma-lg"
+      rounded
+      flat
+      style="background: #e04a95; color: white"
+    >
+      Nouveautés
+    </q-btn>
+
     <sub-category
-      :subCategory="info2"
+      v-for="subCat in whatsNewCategory"
+      :key="subCat.ID"
+      :subCategory="subCat"
+      size="small"
     >
     </sub-category>
 
@@ -43,12 +53,12 @@ const categoryStore = useCategoryStore()
 
 const info = ref()
 const info2 = ref()
-const sousCategories = ref([])
+const whatsNewCategory = ref([])
 
 
 onMounted(async () => {
   console.log('load')
-    api
+  api
     .get('https://la-tournee-web-dev.osc-fr1.scalingo.io/web/stores/1657031023080x131691197342183490/categories')
     .then(response => (info2.value = response.data.forEach((item:string) => {
       if (item["Nom"] == 'Nouveautés') {
@@ -56,13 +66,14 @@ onMounted(async () => {
         categoryStore.categoryID = item['ID']
         api
           .get('https://la-tournee-web-dev.osc-fr1.scalingo.io/web/stores/1657031023080x131691197342183490/categories/' + categoryStore.categoryID)
-          .then(response => (info2.value = response.data['Sous-categories']))
+          .then(response => (info2.value = response.data['Sous-categories'].forEach((item:string) => {
+            console.log(item)
+            whatsNewCategory.value.push(item)
+           })))
 
-        sousCategories.value.push(info2)
-        console.log('GGGGGGGGG', sousCategories.value)
+      }})))
 
-      }
-})))
+
   api
     .get('https://la-tournee-web-dev.osc-fr1.scalingo.io/web/stores/1657031023080x131691197342183490/categories')
     .then(response => (info.value = response.data))

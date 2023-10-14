@@ -3,12 +3,12 @@
     <q-header>
       <q-toolbar class="bg-purple-6 text-white">
 
-
         <q-toolbar-title class="q-my-lg text-h4 row items-center">
           <img
             class="q-mx-xl cursor-pointer"
             src="/rond.svg"
             style="max-width: 80px; height:fit-content"
+            @click="toHome"
           />
           <div class="text-bold">
             Hello !
@@ -22,7 +22,6 @@
         <q-btn class="q-mr-md" rounded color="secondary" icon="shopping_cart">
         </q-btn>
 
-
       </q-toolbar>
     </q-header>
 
@@ -33,7 +32,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+async function toHome() {
+  router.push('/')
+}
 
 
 </script>

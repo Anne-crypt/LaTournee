@@ -1,8 +1,8 @@
 <template>
   <div class="q-pa-md row items-start q-gutter-md">
-    <q-card v-if="name!='landing'&&name!='Nouveautés'"
+    <q-card v-if="name!='landing'&&'Nouveautés'"
       class="my-card cursor-pointer q-hoverable"
-      style="background: #93c8bd"
+      style="background: #b4cac7"
       flat
       bordered
       clickable

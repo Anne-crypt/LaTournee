@@ -18,7 +18,7 @@
           <q-img class="sticky" :src="info.Image"> </q-img>
         </div>
         <div class="col-xs-12 col-sm-6 q-mb-xl">
-          <div v-if="!!info['Nom du produit']" class="text-h4 q-py-md q-mt-lg">
+          <div v-if="!!info['Nom du produit']" class="text-h5 q-py-md q-mt-lg text-bold">
             {{ info['Nom du produit'] }}
           </div>
 
