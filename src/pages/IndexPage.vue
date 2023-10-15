@@ -10,13 +10,15 @@
       Nouveautés
     </q-btn>
 
-    <sub-category
-      v-for="subCat in whatsNewCategory"
-      :key="subCat.ID"
-      :subCategory="subCat"
-      size="small"
-    >
-    </sub-category>
+
+    <q-scroll-area style="height:200px" class="q-mt-lg q-mb-xl">
+      <sub-category
+        v-for="subCat in whatsNewCategory"
+        :key="subCat.ID"
+        :subCategory="subCat"
+        >
+      </sub-category>
+    </q-scroll-area>
 
 
     <div class="row items-center justify-evenly">
